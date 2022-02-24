@@ -4,6 +4,7 @@ const mongoose=require("mongoose")
 const sessioncontroller=require("./controller/sessioncontroller")
 const rolecontroller=require("./controller/role-controller")
 const usercontroller=require("./controller/user-controller")
+const technologycontroller=require("./controller/technology controller")
 const app=express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -48,6 +49,10 @@ app.post("/users",usercontroller.addUser)
 app.get("/users",usercontroller.getUsers)
 app.delete("/users/:userId",usercontroller.deleteuser)
 app.put("/users",usercontroller.updateuser)
+app.post("/technology",technologycontroller.addtechnology)
+app.get("/technology",technologycontroller.gettechnology)
+app.delete("/technology/:technologyId",technologycontroller.deletetechnology)
+app.put("/technology",technologycontroller.updatetechnology)
 //server
 app.listen(3000,function(){
     console.log("server is started on 3000");
