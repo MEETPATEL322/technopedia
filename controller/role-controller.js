@@ -21,4 +21,26 @@ module.exports.addrole = function (req, res) {
     })
 }
 
+module.exports.getAllroles=function(req,res)
+{
+    RoleModel.find(function(err,roles)
+    {
+        if(err)
+        {
+            res.json({msg:"something went wrong",status:-1,data:err})
+        }else{
+            res.json({msg:"roles..",status:200,data:roles})
+        }
+    })
+}
 
+module.exports.deleterole=function(req,res){
+    let roleId=req.params.roleId
+    RoleModel.deleteOne({"_id":roleId},function(err,data){
+        if(err){
+            res.json({msg:"something went wrong",status:-1,data:err})
+        }else{
+            res.json({msg:"removed roles....",status:200,data:data})
+        }
+    })
+}
