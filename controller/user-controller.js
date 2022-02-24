@@ -57,7 +57,7 @@ module.exports.updateuser=function(req,res)
             res.json({msg:"something went wrong",status:-1,data:err})
         }
         else{
-            res.json({msg:"userdeleted..",status:200,data:data})
+            res.json({msg:"userupdated.",status:200,data:data})
         }
     })
     
