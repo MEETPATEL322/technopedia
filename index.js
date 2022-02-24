@@ -42,7 +42,7 @@ app.post("/saveuser",sessioncontroller.saveuser)
 app.post("/roles",rolecontroller.addrole)
 app.get("/roles",rolecontroller.getAllroles )
 app.delete("roles/:roleId",rolecontroller.deleterole)
-
+app.put("/roles",rolecontroller.updaterole)
 //server
 app.listen(3000,function(){
     console.log("server is started on 3000");
