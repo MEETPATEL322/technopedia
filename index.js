@@ -40,8 +40,8 @@ app.get("/login",sessioncontroller.login)
 app.get("/signup",sessioncontroller.signup)
 app.post("/saveuser",sessioncontroller.saveuser)
 app.post("/roles",rolecontroller.addrole)
-
-
+app.get("/roles",rolecontroller.getAllroles )
+app.delete("roles/:roleId",rolecontroller.deleterole)
 
 //server
 app.listen(3000,function(){
