@@ -8,6 +8,7 @@ const technologycontroller=require("./controller/technologycontroller")
 const userquestioncontroller=require("./controller/user-questioncontroller")
 const adminanswercontroller=require("./controller/adminanswercontroller")
 const tutorialcontroller=require("./controller/tutorialcontroller")
+const meetupcontroller=require("./controller/meetupcontroller")
 const app=express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -68,6 +69,10 @@ app.post("/tutorial",tutorialcontroller.addtutorial)
 app.get("/tutorial",tutorialcontroller.gettutorial)
 app.delete("/tutorial/:tutorialId",tutorialcontroller.deletetutorial)
 app.put("/tutorial",tutorialcontroller.updatetutorial)
+app.post("/meetup",meetupcontroller.addmeetup)
+app.get("/meetup",meetupcontroller.getmeetup)
+app.delete("/meetup/:meetupId",meetupcontroller.deletemeetup)
+app.put("/meetup",meetupcontroller.updatemeetup)
 //server
 app.listen(3000,function(){
     console.log("server is started on 3000");
