@@ -7,6 +7,7 @@ const usercontroller=require("./controller/user-controller")
 const technologycontroller=require("./controller/technologycontroller")
 const userquestioncontroller=require("./controller/user-questioncontroller")
 const adminanswercontroller=require("./controller/adminanswercontroller")
+const tutorialcontroller=require("./controller/tutorialcontroller")
 const app=express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -63,6 +64,10 @@ app.post("/adminanswer",adminanswercontroller.addadminanswer)
 app.get("/adminanswer",adminanswercontroller.getadminanswer)
 app.delete("/adminanswer/:answerId",adminanswercontroller.deleteadminanswer)
 app.put("/adminanswer",adminanswercontroller.updateadminanswer)
+app.post("/tutorial",tutorialcontroller.addtutorial)
+app.get("/tutorial",tutorialcontroller.gettutorial)
+app.delete("/tutorial/:tutorialId",tutorialcontroller.deletetutorial)
+app.put("/tutorial",tutorialcontroller.updatetutorial)
 //server
 app.listen(3000,function(){
     console.log("server is started on 3000");
