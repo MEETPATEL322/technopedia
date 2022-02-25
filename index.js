@@ -9,6 +9,7 @@ const userquestioncontroller=require("./controller/user-questioncontroller")
 const adminanswercontroller=require("./controller/adminanswercontroller")
 const tutorialcontroller=require("./controller/tutorialcontroller")
 const meetupcontroller=require("./controller/meetupcontroller")
+const rewardcontroller=require("./controller/rewardcontoller")
 const app=express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -73,6 +74,10 @@ app.post("/meetup",meetupcontroller.addmeetup)
 app.get("/meetup",meetupcontroller.getmeetup)
 app.delete("/meetup/:meetupId",meetupcontroller.deletemeetup)
 app.put("/meetup",meetupcontroller.updatemeetup)
+app.post("/reward",rewardcontroller.addreward)
+app.get("/reward",rewardcontroller.getreward)
+app.delete("/reward/:rewardId",rewardcontroller.deletereward)
+app.put("/reward",rewardcontroller.updatereward)
 //server
 app.listen(3000,function(){
     console.log("server is started on 3000");
