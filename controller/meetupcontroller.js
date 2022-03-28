@@ -6,9 +6,15 @@ const meetupModel=require("../model/meetupmodel")
 module.exports.addmeetup=function(req,res){
   
    let meetupname=req.body.meetupname;
+   let url=req.body.url;
+   let meetupproposal=req.bodymeetupproposal;
+   let date=req.body.date;
 
    let meetup= new meetupModel({
        meetupname: meetupname,
+       url:url,
+       meetupproposal:meetupproposal,
+       date:date,
    })
    meetup.save(function(err,data)
    {
@@ -46,9 +52,12 @@ module.exports.deletemeetup=function(req,res){
 module.exports.updatemeetup=function(req,res)
 {
     let parammeetupId=req.body.meetupId
+    let paramurl=req.body.url
+    let parammeetupproposal=req.body.meetupproposal
+    let paramdate=req.body.date
     
     
- meetupModel.updateOne({_id:parammeetupId},function(err,data){
+ meetupModel.updateOne({_id:parammeetupId},{url:paramurl},{meetupproposal:parammeetupproposal},{date:paramdate},function(err,data){
        if(err){
             res.json({msg:"something went wrong",status:-1,data:err})
         }

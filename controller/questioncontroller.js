@@ -1,13 +1,15 @@
-const userquestionModel=require("../model/user-questionmodel")
+const questionModel=require("../model/questionmodel")
 
-module.exports.adduserquestion=function(req,res){
+module.exports.addquestion=function(req,res){
   
    let questionname=req.body.questionname;
+   let description=req.body.description;
 
-   let userquestion= new userquestionModel({
+   let question= new questionModel({
        questionname: questionname,
+       description: description,
    })
-   userquestion.save(function(err,data)
+   question.save(function(err,data)
    {
        if(err)
        {
@@ -18,8 +20,8 @@ module.exports.adduserquestion=function(req,res){
        }
    })
 }
-module.exports.getuserquestion=function(req,res){
-   userquestionModel.find().populate("user").exec(function(err,data){
+module.exports.getquestion=function(req,res){
+   questionModel.find().populate("user").exec(function(err,data){
         if(err){
             res.json({msg:"something went wrong",status:-1,data:err})
         }
@@ -29,9 +31,11 @@ module.exports.getuserquestion=function(req,res){
         
     })
 }
-module.exports.deleteuserquestion=function(req,res){
+module.exports.deletequestion=function(req,res){
     let questionId=req.params.questionId
-    userquestionModel.deleteOne({_id:questionId},function(err,data){
+
+
+    questionModel.deleteOne({_id:questionId},function(err,data){
     if(err){
             res.json({msg:"something went wrong",status:-1,data:err})
         }
@@ -40,12 +44,12 @@ module.exports.deleteuserquestion=function(req,res){
         }
     })
 }
-module.exports.updateuserquestion=function(req,res)
+module.exports.updatequestion=function(req,res)
 {
     let paramquestionId=req.body.questionId
     
     
-    userquestionModel.updateOne({_id:paramquestionId},function(err,data){
+    questionModel.updateOne({_id:paramquestionId},function(err,data){
        if(err){
             res.json({msg:"something went wrong",status:-1,data:err})
         }

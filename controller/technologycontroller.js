@@ -2,10 +2,10 @@ const technologyModel=require("../model/technology-model")
 
 module.exports.addtechnology=function(req,res){
   
-   let technologyname=req.body.technologyname
+   let technologylbl=req.body.technologylbl
 
    let technology= new technologyModel({
-       technologyname:technologyname
+       technologylbl:technologylbl
    })
    technology.save(function(err,data)
    {
@@ -43,9 +43,10 @@ module.exports.deletetechnology=function(req,res){
 module.exports.updatetechnology=function(req,res)
 {
     let paramtechnologyId=req.body.technologyId
+    let paramtechnologylbl=req.body.technologylbl
     
     
-    technologyModel.updateOne({_id:paramtechnologyId},function(err,data){
+    technologyModel.updateOne({_id:paramtechnologyId},{technologylbl:paramtechnologylbl},function(err,data){
        if(err){
             res.json({msg:"something went wrong",status:-1,data:err})
         }

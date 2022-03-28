@@ -1,13 +1,15 @@
-const adminanswerModel=require("../model/adminanswermodel")
+const answerModel=require("../model/answermodel")
 
-module.exports.addadminanswer=function(req,res){
+module.exports.addanswer=function(req,res){
   
-   let answer=req.body.answer;
+   let answername=req.body.answername;
+   let docURL=req.body.docURL;
 
-   let adminanswer= new adminanswerModel({
-       answer: answer,
+   let answer= new answerModel({
+       answername: answername,
+       docURL: docURL,
    })
-   adminanswer.save(function(err,data)
+   answer.save(function(err,data)
    {
        if(err)
        {
@@ -18,8 +20,8 @@ module.exports.addadminanswer=function(req,res){
        }
    })
 }
-module.exports.getadminanswer=function(req,res){
-   adminanswerModel.find().populate("user").populate("userquestion"). exec(function(err,data){
+module.exports.getanswer=function(req,res){
+   answerModel.find().populate("user").populate("question"). exec(function(err,data){
         if(err){
             res.json({msg:"something went wrong",status:-1,data:err})
         }
@@ -29,9 +31,9 @@ module.exports.getadminanswer=function(req,res){
         
     })
 }
-module.exports.deleteadminanswer=function(req,res){
+module.exports.deleteanswer=function(req,res){
     let answerId=req.params.answerId
-    adminanswerModel.deleteOne({_id:answerId},function(err,data){
+    answerModel.deleteOne({_id:answerId},function(err,data){
     if(err){
             res.json({msg:"something went wrong",status:-1,data:err})
         }
@@ -40,12 +42,12 @@ module.exports.deleteadminanswer=function(req,res){
         }
     })
 }
-module.exports.updateadminanswer=function(req,res)
+module.exports.updateanswer=function(req,res)
 {
     let paramanswerId=req.body.answerId
     
     
-    adminanswerModel.updateOne({_id:paramanswerId},function(err,data){
+    answerModel.updateOne({_id:paramanswerId},function(err,data){
        if(err){
             res.json({msg:"something went wrong",status:-1,data:err})
         }
