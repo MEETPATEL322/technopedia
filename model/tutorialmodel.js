@@ -1,17 +1,26 @@
 const mongoose = require("mongoose")
 //schema
 const tutorialSchema = new mongoose.Schema({
-    tutorialname: {
+  
+    technolohgylbl: {
         type: String,
+    },
+    url: {
+        type: String,
+    },
+    isapproved: {
+        type: String,
+        
+    },
+    rejectreason:{
+        type:String,
+
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
     },
-    technology: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "technology",
-    },
+   
     
     
 })

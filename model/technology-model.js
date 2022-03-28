@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 //schema
 const technologySchema=new mongoose.Schema({
-    technologyname:{
+    technologylbl:{
         type:String,
     },
     user:{

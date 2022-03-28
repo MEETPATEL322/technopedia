@@ -1,20 +1,21 @@
 const mongoose = require("mongoose")
 //schema
-const adminanswerSchema = new mongoose.Schema({
-    answer: {
+const userbadgeSchema = new mongoose.Schema({
+    earndate: {
         type: String,
     },
+    
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
     },
-    userquestion: {
+    badge: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "userquestion",
+        ref: "badge",
     },
-    
+   
     
 })
 
-const adminanswerModel = mongoose.model("adminanswer", adminanswerSchema)
-module.exports = adminanswerModel
+const userbadgeModel = mongoose.model("userbadge", userbadgeSchema)
+module.exports = userbadgeModel

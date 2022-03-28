@@ -16,6 +16,9 @@ const UserSchema = new mongoose.Schema({
     mobileno: {
         type: String
     },
+    qualification:{
+        type:String
+    },
     role: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "role"
